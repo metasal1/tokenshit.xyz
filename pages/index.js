@@ -62,13 +62,13 @@ export default function Home({tokens, count}) {
   )
 }
 export async function getServerSideProps(context) {
-  const hostname = context.req.headers.host;
+  // const hostname = context.req.headers.host;
 
-  const res = await fetch(`http://${hostname}/api/tokens`)
+  const res = await fetch(`https://tokenshit-xyz.vercel.app/api/tokens`)
   const data = await res.json()
   
   const count = data.tokens.length;
-  const tokens = data.tokens.slice(0,50);
+  const tokens = data.tokens.slice(0,100);
 
   return { props: { tokens, count } }
 }
