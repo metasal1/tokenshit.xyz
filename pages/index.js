@@ -31,7 +31,7 @@ export default function Home({tokens, count}) {
       </Head>
 
       <main className={styles.main}>
-        <div className='text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary'>
+        <div className='sticky top-0 bg-primary text-secondary backdrop-blur-lg p-5 text-5xl font-extrabold rounded-2xl text-center'>
           Solana Token List
         </div>
 
@@ -61,11 +61,11 @@ export default function Home({tokens, count}) {
                 }
             }).slice(0,50).map((token) => (
               <React.Fragment key={token.address} className="hover:bg-secondary">
-              <div><img src={token.logoURI} alt={token.name} width="25" height="25"/></div>
+              <div><img src={token.logoURI} width="25" height="25"/></div>
               <div>{token.symbol}</div>
               <div>{token.name}</div>
               <div>
-              <a target="blank" href={`https://solscan.io/account/${token.address}`}> 🔎 </a>
+              <a target="blank" href={`https://solscan.io/account/${token.address}`} className="blur-[2px] hover:blur-none"> 🔎 </a>
               {/* {token.address} */}
               </div>
               </React.Fragment>
@@ -92,11 +92,12 @@ export default function Home({tokens, count}) {
 export async function getServerSideProps(context) {
   // const hostname = context.req.headers.host;
 
-  const res = await fetch(`https://tokenshit-xyz.vercel.app/api/tokens`)
+  const res = await fetch(`https://raw.githubusercontent.com/solana-labs/token-list/main/src/tokens/solana.tokenlist.json`)
+  // const res = await fetch(`https://tokenshit-xyz.vercel.app/api/tokens`)
   const data = await res.json()
   
   const count = data.tokens.length;
-  const tokens = data.tokens;
+  const tokens = data.tokens.reverse();
   // const tokens = data.tokens.slice(0,1000);
 
   return { props: { tokens, count } }
