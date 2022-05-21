@@ -19,7 +19,7 @@ export default class MyDocument extends Document {
               `
             }}
           />
-
+        <link href="http://fonts.cdnfonts.com/css/karmatic-arcade" rel="stylesheet" />
         </Head>
         <body>
           <Main />

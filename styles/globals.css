@@ -1,12 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('http://fonts.cdnfonts.com/css/karmatic-arcade');
+     
 html,
 body {
   padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  margin: 0;    
+  font-family: monospace;                                            
 }
 
 a {
@@ -16,4 +17,9 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.header {
+  font-family: 'Karmatic Arcade';
+  text-transform: uppercase;
 }

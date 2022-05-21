@@ -11,7 +11,10 @@ module.exports = {
       black: "#000000",
     },
     extend: {
-      
+      fontFamily: {
+        sans: ["sans-serif"],
+        karma: ["Karmatic Arcade"]
+      },
     },
   },
   plugins: [],
