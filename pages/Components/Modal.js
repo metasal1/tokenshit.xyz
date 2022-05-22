@@ -29,7 +29,7 @@ export default function Modal({ open, onClose, tokenAddress, tokenData, tokenNam
         <button>✂️</button>
 
         <h2 className="font-karma">Total Supply</h2>
-        <p className="text-2xl">{tokenData.result.value.amount || 'got nothing'}</p>
+        <p className="text-2xl">{(tokenData.result.value.amount / 1_000_000_000).toFixed(tokenData.result.value.decimals) || 'got nothing'}</p>
 
         <a
                         target="blank"
