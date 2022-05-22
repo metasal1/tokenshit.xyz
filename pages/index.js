@@ -49,14 +49,15 @@ export default function Home({ tokens, count }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Solana Token List | tokenshit.xyz</title>
+        <title>Solana Tokens | tokenshit.xyz</title>
         <TwitterMeta />
         <link rel="icon" href="/favicon.ico" />                
       </Head>
 
       <main className="p-5 font-bold">
         <div className="shadow-lg font-karma border-4 sticky top-0 bg-primary text-secondary backdrop-blur-lg p-5 text-3xl md:text-5xl text-center">
-          Solana Token List
+          Solana Tokens 
+          <div className="text-xl font-mono pt-3">Hit 🎯 or 💩 Shit</div>
         </div>
 <div className="text-center p-2 font-extralight italic">
         There are currently {count} tokens registered.
@@ -66,7 +67,7 @@ export default function Home({ tokens, count }) {
             onChange={(event) => {
               setSearchTerm(event.target.value);
             }}
-            className="text-center bg-black text-white p-2 w-full md:3/4 lg:1/3 focus-within:"
+            className="text-center bg-black text-white p-2 w-full md:3/4 lg:1/3"
             type="search"
             placeholder={(`Search here to filter...`)}
           ></input>
@@ -93,7 +94,7 @@ export default function Home({ tokens, count }) {
            </div>
            </>
 }
-            <div className="grid grid-cols-[2fr_2fr_4fr_1fr] gap-3 shadow-2xl p-5">
+            <div className="grid grid-cols-[2fr_2fr_4fr_1fr] gap-3 shadow-2xl p-5 mt-5">
               <div className="header">Logo</div>
               <div className="header">Symbol</div>
               <div className="header">Name</div>
@@ -122,7 +123,8 @@ export default function Home({ tokens, count }) {
                     <div>{token.symbol}</div>
                     <div>{token.name}</div>
                     <div>
-                      {/* <a className="cursor-pointer" target="blank" onClick={() => setIsOpen(true)}> 🔎 </a> */}
+                      <a className="text-2xl cursor-pointer" onClick={()=> alert('Coming Soon')}>🎯</a>
+                      <a className="text-2xl cursor-pointer" onClick={()=> alert('Coming Soon')}>💩</a>
                       <a
                         className="cursor-pointer"
                         target="blank"

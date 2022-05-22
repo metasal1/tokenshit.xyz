@@ -11,6 +11,8 @@ export default function Footer() {
         <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
       </span>
     </a>
+    <a>© Copyright {new Date().getFullYear()}</a>
+    {/* <a>{performance.now().toPrecision(2) / 10000}sec</a> */}
   </footer></div>
   )
 }
