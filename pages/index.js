@@ -59,7 +59,7 @@ export default function Home({ tokens, count }) {
           Solana Token List
         </div>
 <div className="text-center p-2 font-extralight italic">
-        {count} tokens registered.
+        There are currently {count} tokens registered.
         </div>
         <div>
           <input
@@ -68,12 +68,31 @@ export default function Home({ tokens, count }) {
             }}
             className="text-center bg-black text-white p-2 w-full md:3/4 lg:1/3 focus-within:"
             type="search"
-            placeholder="Filter your search..."
+            placeholder={(`Search here to filter...`)}
           ></input>
         </div>
         <div className={styles.grid}>
           <>
-            <div className="text-2xl font-medium p-2">Latest 50 Tokens</div>
+{searchTerm && 
+<>
+            <div className="text-2xl font-medium p-2">Found&nbsp;
+           {tokens
+                .filter((value) => {
+                  if (searchTerm === "") {
+                    return value;
+                  } else if (
+                    value.name.toLowerCase().includes(searchTerm.toLowerCase())
+                  ) {
+                    return value;
+                  }
+                })
+                .length
+                }
+                &nbsp;tokens.
+            
+           </div>
+           </>
+}
             <div className="grid grid-cols-[2fr_2fr_4fr_1fr] gap-3 shadow-2xl p-5">
               <div className="header">Logo</div>
               <div className="header">Symbol</div>
