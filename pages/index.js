@@ -46,6 +46,14 @@ export default function Home({ tokens, count }) {
     setTokenName(tokenName);
     setTokenSymbol(tokenSymbol);
   }
+
+  function clearSearch(){
+
+    const searchBar = document.getElementById('searchBar');
+    searchBar.value = '';
+    setSearchTerm('');
+
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -63,14 +71,19 @@ export default function Home({ tokens, count }) {
         There are currently {count} tokens registered.
         </div>
         <div>
+          <div className="grid grid-cols-[9fr_1fr]" >
           <input
             onChange={(event) => {
               setSearchTerm(event.target.value);
             }}
-            className="text-center bg-black text-white p-2 w-full md:3/4 lg:1/3"
-            type="search"
+            className=" text-center bg-black text-white p-2 w-full md:3/4 lg:1/3 focus:border-primary-2 focus:rounded-none focus:outline-none "
+            type="text"
+            id="searchBar"
             placeholder={(`Search here to filter...`)}
-          ></input>
+          >
+          </input>
+          <button className="inset-0 border-1 p-1 bg-primary hover:text-white" value="Reset" onClick={() => clearSearch()}>Clear</button>
+          </div>
         </div>
         <div className={styles.grid}>
           <>
