@@ -1,6 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+
 export default function Modal({ open, onClose, tokenAddress, tokenData, tokenName, tokenSymbol }) {
+
+  // const token = useContext(TokenContext);
 
   if (!open) {
     return null;
@@ -38,7 +41,7 @@ export default function Modal({ open, onClose, tokenAddress, tokenData, tokenNam
                         {" "}
                         🔦{" "}
                       </a>
-       
+       <div>{JSON.stringify(tokenData)}</div>
       </div>
     </div>
   );

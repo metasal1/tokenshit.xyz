@@ -1,8 +1,9 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Modal from "./Components/Modal";
-import { useState, useEffect, Fragment } from "react";
+import { useState, createContext, useEffect, Fragment } from "react";
 import TwitterMeta from "./Components/TwitterMeta";
+import Image from "next/image";
 import Footer from "./Components/Footer";
 export default function Home({ tokens, count }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,7 +14,8 @@ export default function Home({ tokens, count }) {
   const [tokenData, setTokenData] = useState("");
   const [tokenName, setTokenName] = useState("");
   const [tokenSymbol, setTokenSymbol] = useState("");
-
+  const TokenContext = createContext("DhpikB5Qf4YZRzeGpFiAcZdSPAETS1mLF94PZz3oUos1");
+ 
   useEffect(() => {
     let headersList = {
       Accept: "*/*",
@@ -38,14 +40,14 @@ export default function Home({ tokens, count }) {
       .then(function (data) {
         console.log(data);
         setTokenData(data);
+        setTokenName(tokenName);
+        setTokenSymbol(tokenSymbol);
       });
   }, [tokenAddress]);
 
   function doStuff(tokenAddress) {
     setIsOpen(true);
     setTokenAddress(tokenAddress);
-    setTokenName(tokenName);
-    setTokenSymbol(tokenSymbol);
   }
 
   function clearSearch() {
@@ -54,6 +56,8 @@ export default function Home({ tokens, count }) {
     setSearchTerm("");
   }
   return (
+    <TokenContext.Provider>
+
     <div className={styles.container}>
       <Head>
         <title>Solana Tokens | tokenshit.xyz</title>
@@ -141,39 +145,68 @@ export default function Home({ tokens, count }) {
                     </div>
                     <div>{token.symbol}</div>
                     <div>{token.name}</div>
-                    <div>
-                      <a
+                    <div className="">
+                      {token.extensions?.website && (<a
+                        className=""
                         href={
                           token.extensions?.website + "?referrer=tokenshit.xyz"
                         }
                         target={"_blank"}
                         rel="noreferrer"
                       >
-                       (w)
-                      </a>
+                        <Image
+                          src={"/www.svg"}
+                          alt={token.extensions?.website}
+                          width={15}
+                          height={15}
+                        />
+                      </a>)}
+                      {token.extensions?.twitter && (
                       <a
+                        className=""
                         href={token.extensions?.twitter}
                         target={"_blank"}
                         rel="noreferrer"
                       >
-                        (t)
-                      </a>
+                        <Image
+                          src={"/twitter.svg"}
+                          alt={token.extensions?.twitter}
+                          width={15}
+                          height={15}
+                        />
+                      </a>)}
+                      {token.extensions?.facebook && (
                       <a
+                        className=""
                         href={token.extensions?.facebook}
                         target={"_blank"}
                         rel="noreferrer"
                       >
-                        (fb)
-                      </a><a
+                        <Image
+                          src={"/facebook.svg"}
+                          alt={token.extensions?.facebook}
+                          width={15}
+                          height={15}
+                        />
+                      </a>
+                      )}
+                      {token.extensions?.discord && (
+                      <a
+                        className="pl-1"
                         href={token.extensions?.discord}
                         target={"_blank"}
                         rel="noreferrer"
                       >
-                        (d)
-                      </a>
+                        <Image
+                          src={"/discord.svg"}
+                          alt={token.extensions?.discord}
+                          width={15}
+                          height={15}
+                        />
+                      </a>)}
                     </div>
                     <div>
-                      <a
+                      {/* <a
                         className="text-2xl cursor-pointer"
                         onClick={() => alert("Coming Soon")}
                       >
@@ -184,7 +217,7 @@ export default function Home({ tokens, count }) {
                         onClick={() => alert("Coming Soon")}
                       >
                         💩
-                      </a>
+                      </a> */}
                       <a
                         className="cursor-pointer"
                         target="blank"
@@ -219,6 +252,7 @@ export default function Home({ tokens, count }) {
         }}
       />
     </div>
+    </TokenContext.Provider>
   );
 }
 export async function getServerSideProps(context) {
