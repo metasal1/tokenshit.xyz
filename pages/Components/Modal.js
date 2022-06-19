@@ -15,7 +15,7 @@ export default function Modal({
     return null;
   }
   return (
-    <div className="inset-0 fixed bg-secondary bg-opacity-20 flex justify-center items-center backdrop-blur-sm">
+    <div className="inset-0 fixed bg-secondary bg-opacity-20 flex justify-center items-center backdrop-blur-sm z-20">
       <div
         id="modal"
         className="bg-secondary text-primary max-w-sm p-3 shadow-lg fixed border-primary border-4 "
@@ -36,23 +36,21 @@ export default function Modal({
         <p className="font-karma">Token Symbol</p>
         <p className="text-2xl">{tokenSymbol || "got nothing"}</p>
         <h2 className="font-karma">Token Address</h2>
-        <p id="no" className="overflow-auto">
+        <p id="no" className="break-words select-all selection:bg-primary">
           {tokenAddress || "got nothing"}
         </p>
         <button>✂️</button>
 
         <h2 className="font-karma">Total Supply</h2>
         <p className="text-2xl">
-          {(tokenData.result.value.amount / 1_000_000_000).toFixed(
-            tokenData.result.value.decimals
-          ) || "got nothing"}
+          {tokenData.result.value.uiAmount.toLocaleString()}
         </p>
 
         <a target="blank" href={`https://solscan.io/account/${tokenAddress}`}>
           {" "}
           🔦{" "}
         </a>
-        <div>{JSON.stringify(tokenData)}</div>
+        {/* <div>{JSON.stringify(tokenData)}</div> */}
       </div>
     </div>
   );

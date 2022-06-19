@@ -68,7 +68,7 @@ export default function Home({ tokens, count }) {
         </Head>
 
         <main className="p-5 font-bold">
-          <div className="shadow-lg font-karma border-4 sticky top-0 bg-primary text-secondary backdrop-blur-lg p-5 text-3xl md:text-5xl text-center">
+          <div className="shadow-lg font-karma border-4 sticky top-0 bg-primary text-secondary backdrop-blur-lg p-5 text-3xl md:text-5xl text-center z-10">
             Solana Tokens
             <div className="text-xl font-mono pt-3">Hit 🎯 or 💩 Shit</div>
           </div>
@@ -141,7 +141,7 @@ export default function Home({ tokens, count }) {
                   })
                   .slice(0, 50)
                   .map((token) => (
-                    <Fragment key={token.address} className="bg-primary col-span-5">
+                    <Fragment key={token.address}>
                       <div className="max-w-lg mx-auto select-all ">
                         <img
                           src={token.logoURI}
