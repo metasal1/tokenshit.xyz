@@ -2,12 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://tokenshit.xyz/fonts/stylesheet.css');
-     
+
 html,
 body {
   padding: 0;
-  margin: 0;    
-  font-family: monospace;                                            
+  margin: 0;
+  font-family: monospace;
+  background-color: white;
+  color: black;
 }
 
 a {
@@ -18,8 +20,22 @@ a {
 * {
   box-sizing: border-box;
 }
-
+.logo {
+  fill: currentColor;
+}
 .header {
   font-family: 'Karmatic Arcade';
   text-transform: uppercase;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* defaults to dark theme */
+  body { 
+    color: white;
+    background: black;
+  }
+  .logo {
+    fill: white;
+  }
+  
 }

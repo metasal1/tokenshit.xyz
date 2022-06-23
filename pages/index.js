@@ -121,7 +121,7 @@ export default function Home({ tokens, count }) {
                   </div>
                 </>
               )}
-              <div className="grid grid-cols-[1fr_2fr_4fr_1fr_1fr] gap-3 shadow-2xl p-5 mt-5">
+              <div className="grid grid-cols-[1fr_2fr_4fr_1fr_1fr] gap-3 shadow-2xl shadow-primary p-5 mt-5">
                 <div className="header">Logo</div>
                 <div className="header">Symbol</div>
                 <div className="header">Name</div>
