@@ -3,13 +3,18 @@
 @tailwind utilities;
 @import url('https://tokenshit.xyz/fonts/stylesheet.css');
 
+@layer components {
+
+  .dark {
+    @apply text-white bg-black;
+  }
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: monospace;
-  background-color: white;
-  color: black;
 }
 
 a {
@@ -28,14 +33,3 @@ a {
   text-transform: uppercase;
 }
 
-@media (prefers-color-scheme: dark) {
-  /* defaults to dark theme */
-  body { 
-    color: white;
-    background: black;
-  }
-  .logo {
-    fill: white;
-  }
-  
-}

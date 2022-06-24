@@ -5,7 +5,6 @@ import { useState, createContext, useEffect, Fragment } from "react";
 import TwitterMeta from "./Components/TwitterMeta";
 import Image from "next/image";
 import Footer from "./Components/Footer";
-
 export default function Home({ tokens, count }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -58,6 +57,7 @@ export default function Home({ tokens, count }) {
     searchBar.value = "";
     setSearchTerm("");
   }
+
   return (
     <TokenContext.Provider value={tokenAddress}>
       <div className={styles.container}>
@@ -94,9 +94,6 @@ export default function Home({ tokens, count }) {
                 Clear
               </button>
             </div>
-            {/* <div>address = {tokenAddress}</div>
-            <div>name = {tokenName}</div>
-            <div>symbol = {tokenSymbol}</div> */}
           </div>
           <div className={styles.grid}>
             <>
@@ -269,6 +266,7 @@ export default function Home({ tokens, count }) {
             setIsOpen(false);
           }}
         />
+
       </div>
     </TokenContext.Provider>
   );
