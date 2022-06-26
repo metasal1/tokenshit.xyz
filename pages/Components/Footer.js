@@ -15,7 +15,7 @@ export default function Footer() {
       <span className={styles.logo}>
         <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
       </span>
-    </a>        <button className="hover:text-5xl" title='switch between dark mode or light mode' className="text-2xl" onClick={handleMode}>
+    </a>        <button className="hover:bg-black hover:rounded-full hover:p-1" title='switch between dark mode or light mode' onClick={handleMode}>
           {darkTheme ? "☀️" : "🌙"}
         </button>
 
